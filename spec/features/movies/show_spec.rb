@@ -43,9 +43,9 @@ describe "When a user visits a movie's show page" do
   it "can see a list of all the movie's actors from youngest to oldest" do
     visit "/studios/#{@studio1.id}/movies/#{@movie2.id}"
 
-    expected_array = ["Heath Ledger", "Maggie Gyllenhaal", "Christian Bale"]
-
-    page.find(".actors").map(&:text).should eq expected_array
+    expect(page.find("ul#actors li:nth-child(1)")).to have_content @actor4.name
+    expect(page.find("ul#actors li:nth-child(2)")).to have_content @actor3.name
+    expect(page.find("ul#actors li:nth-child(3)")).to have_content @actor1.name
   end
 
   it "can see the average age of all the movie's actors" do

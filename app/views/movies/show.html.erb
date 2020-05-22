@@ -3,3 +3,10 @@
   <li>Creation Year: <%= @movie.year %> </li>
   <li>Genre: <%= @movie.genre %> </li>
 </ul>
+
+<h4>Actors</h4>
+<ul id="actors">
+  <% @movie.sort_actors.each do |actor| %>
+    <li><%= actor.name %></li>
+  <% end %>
+</ul>
