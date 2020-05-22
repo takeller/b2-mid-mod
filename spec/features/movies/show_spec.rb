@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "When a user visits the studio index page" do
+describe "When a user visits a movie's show page" do
 
   before(:each) do
     @studio1 = Studio.create(name: "Warner Brothers", location: "LA")
@@ -11,15 +11,20 @@ describe "When a user visits the studio index page" do
     @movie3 = @studio2.movies.create(title: "Star Wars: 7", year: 2016, genre: "SciFi")
     @movie4 = @studio2.movies.create(title: "Star Wars: 8", year: 2018, genre: "SciFi")
   end
-  
-  it "can see a list of all movie studios and their movies" do
-    visit "/studios"
 
-    expect(page).to have_content("Warner Brothers")
+  it "can see the movie's title, creation year, and genre" do
+    visit "/studios/#{@studio1.id}/movies/#{@movie1.id}"
+
     expect(page).to have_content("Batman Begins")
-    expect(page).to have_content("Dark Knight")
-    expect(page).to have_content("Disney")
-    expect(page).to have_content("Star Wars: 7")
-    expect(page).to have_content("Star Wars: 8")
+    expect(page).to have_content("Creation Year: 2007")
+    expect(page).to have_content("Genre: Action")
+  end
+
+  it "can see a list of all the movie's actors from youngest to oldest" do
+
+  end
+
+  it "can see the average age of all the movie's actors" do
+
   end
 end
