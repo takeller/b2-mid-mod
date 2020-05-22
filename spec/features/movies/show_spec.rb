@@ -53,4 +53,17 @@ describe "When a user visits a movie's show page" do
 
     expect(page).to have_content("Average Actor Age: 38.67")
   end
+
+  it "can add an actor to the movie" do
+    visit "/studios/#{@studio1.id}/movies/#{@movie2.id}"
+
+    expect(@movie2.actors.include?(@actor2)).to eq(false)
+
+    fill_in :actor, with: @actor2.name
+    click_on "Add Actor"
+
+    expect(current_path).to eq("/studios/#{@studio1.id}/movies/#{@movie2.id}")
+    expect(page).to have_content("#{@actor2.name}")
+    expect(@movie2.actors.include?(@actor2)).to eq(true)
+  end
 end
