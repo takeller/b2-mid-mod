@@ -49,6 +49,8 @@ describe "When a user visits a movie's show page" do
   end
 
   it "can see the average age of all the movie's actors" do
+    visit "/studios/#{@studio1.id}/movies/#{@movie2.id}"
 
+    expect(page).to have_content("Average Actor Age: 38.67")
   end
 end

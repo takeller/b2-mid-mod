@@ -25,5 +25,9 @@ describe Movie, type: :model do
     it "#sort_actors" do
       expect(@movie2.sort_actors).to eq([@actor4, @actor3, @actor1])
     end
+
+    it "#average_age" do
+      expect(@movie2.average_age).to eq(38.67)
+    end
   end
 end
