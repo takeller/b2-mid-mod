@@ -40,6 +40,13 @@ describe "When a user visits an actor's show page" do
   end
 
   it "can see a unique list of all other actors worked with" do
+    visit "/actors/#{@actor1.id}"
 
+    expect(page).to have_content("Actors Worked With:")
+    expect(page).to have_content(@actor2.name)
+    expect(page).to have_content(@actor3.name)
+    expect(page).to have_content(@actor4.name)
+    expect(page).to_not have_content(@actor5.name)
+    expect(page).to_not have_content(@actor6.name)
   end
 end

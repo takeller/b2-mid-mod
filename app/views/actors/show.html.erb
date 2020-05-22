@@ -1,2 +1,9 @@
 <h1> <%= @actor.name %></h1>
 <h5>Age: <%= @actor.age %></h5>
+
+<h4> Actors Worked With: </h4>
+<ul>
+  <% @actor.actors_worked_with.each do |actor| %>
+    <li> <%= actor.name %></li>
+  <% end %>
+</ul>
